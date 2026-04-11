@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+
+.owner-card {
+  max-width: 900px;
+}
+
+.owner-title {
+  font-family: "Playfair Display", serif;
+  color: var(--espresso);
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.owner-subtitle {
+  color: var(--mocha);
+  margin: 0 0 18px;
+}
+
+.owner-section {
+  margin-bottom: 18px;
+}
+
+.owner-section h3 {
+  margin: 0 0 12px;
+  color: var(--espresso);
+  font-size: 1rem;
+}
+
+.owner-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.owner-form-grid .field {
+  margin-bottom: 0;
+}
+
+.owner-form-grid .field.full {
+  grid-column: 1 / -1;
+}
+
+.owner-checkboxes {
+  display: grid;
+  gap: 8px;
+  color: var(--mocha);
+  font-size: 0.9rem;
+}
+
+.owner-checkboxes label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.owner-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.owner-helper {
+  margin-top: 16px;
+  color: var(--mocha);
+  text-align: center;
+}
+
+.owner-helper a {
+  color: var(--espresso);
+  font-weight: 600;
+  text-decoration: none;
+}

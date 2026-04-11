@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap");
+
+.premium-login {
+  background: radial-gradient(circle at top left, #fff6ee 0%, #f3e6d8 45%, #eadbcc 100%);
+}
+
+.login-card {
+  max-width: 520px;
+  width: 100%;
+  border-radius: 24px;
+}
+
+.login-header {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.login-header h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.2rem;
+  margin: 0 0 6px;
+  color: var(--espresso);
+}
+
+.login-header p {
+  margin: 0;
+  color: var(--mocha);
+}
+
+.login-form {
+  display: grid;
+  gap: 10px;
+}
+
+.role-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: #f1e3d5;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 0;
+  overflow: hidden;
+}
+
+.role-indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background: #2d1b12;
+  border-radius: 999px;
+  transition: transform 0.25s ease;
+  box-shadow: 0 6px 16px rgba(45, 27, 18, 0.2);
+}
+
+.role-indicator.left {
+  transform: translateX(0);
+}
+
+.role-indicator.right {
+  transform: translateX(100%);
+}
+
+.role-btn {
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  color: #5c3d2e;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 120px;
+  flex: 1 1 0;
+}
+
+.role-btn.active {
+  color: #fff3e4;
+}
