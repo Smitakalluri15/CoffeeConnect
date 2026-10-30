@@ -26,4 +26,4 @@ Disallow: /reset-password
 Disallow: /forgot-password
 
 # Sitemap
-Sitemap: https://coffeeconnect.app/sitemap.xml
+Sitemap: https://statuesque-melba-7a1d8e.netlify.app/sitemap.xml

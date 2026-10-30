@@ -5,7 +5,12 @@ const DEFAULT_TITLE = "CoffeeConnect | Discover, Reserve & Order From Artisanal 
 const DEFAULT_DESCRIPTION =
   "Discover curated brews, reserve tables at top artisanal cafes, order specialty coffee, and join community food sharing with CoffeeConnect.";
 const DEFAULT_IMAGE = "https://coffeeconnect.app/table-types/indoor-standard.webp";
-const BASE_URL = "https://coffeeconnect.app";
+const getBaseUrl = () => {
+  if (typeof window !== "undefined" && window.location.origin) {
+    return window.location.origin;
+  }
+  return "https://statuesque-melba-7a1d8e.netlify.app";
+};
 
 /**
  * Reusable SEO component for dynamic metadata updates in React SPAs.
@@ -25,7 +30,7 @@ export default function SEO({
   description = DEFAULT_DESCRIPTION,
   keywords,
   canonical,
-  ogImage = DEFAULT_IMAGE,
+  ogImage,
   ogType = "website",
   noindex = false,
   schema
@@ -34,6 +39,7 @@ export default function SEO({
 
   useEffect(() => {
     // 1. Update Title
+    const effectiveOgImage = ogImage || `${getBaseUrl()}/table-types/indoor-standard.webp`;
     const formattedTitle = title
       ? title.includes("CoffeeConnect")
         ? title
@@ -68,7 +74,7 @@ export default function SEO({
     );
 
     // 3. Canonical Link
-    const targetCanonical = canonical || `${BASE_URL}${location.pathname}`;
+    const targetCanonical = canonical || `${getBaseUrl()}${location.pathname}`;
     let canonicalEl = document.querySelector("link[rel='canonical']");
     if (!canonicalEl) {
       canonicalEl = document.createElement("link");
@@ -82,12 +88,12 @@ export default function SEO({
     setMeta("property", "og:description", description);
     setMeta("property", "og:url", targetCanonical);
     setMeta("property", "og:type", ogType);
-    setMeta("property", "og:image", ogImage);
+    setMeta("property", "og:image", effectiveOgImage);
 
     // 5. Twitter Card Tags
     setMeta("name", "twitter:title", formattedTitle);
     setMeta("name", "twitter:description", description);
-    setMeta("name", "twitter:image", ogImage);
+    setMeta("name", "twitter:image", effectiveOgImage);
 
     // 6. Dynamic JSON-LD Schema
     const existingSchemaScript = document.getElementById("dynamic-seo-schema");
