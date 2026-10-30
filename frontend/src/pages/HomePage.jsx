@@ -1,3 +1,4 @@
+import SEO from "../components/common/SEO";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getNearbyCafes, getPublicCafes, resolveMediaUrl } from "../api/api";
@@ -180,6 +181,11 @@ export default function HomePage() {
 
   return (
     <div className="home-page-v2">
+      <SEO
+        title="Discover, Reserve & Order From Artisanal Cafes"
+        description="Find top-rated artisanal cafes near you, reserve tables instantly, browse specialty coffee menus, and enjoy fresh brews with CoffeeConnect."
+        keywords="coffee, cafes near me, book cafe table, artisanal coffee, espresso, specialty roasters, CoffeeConnect"
+      />
       <section className="hero-v2 container">
         <div className="hero-copy">
           <span className="hero-kicker">Est. 2026 • The Future of Brewing</span>

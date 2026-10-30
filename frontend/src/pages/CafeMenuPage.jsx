@@ -1,3 +1,4 @@
+import SEO from "../components/common/SEO";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { getCafeDetails, getCafeMenu, resolveMediaUrl } from "../api/api";
@@ -132,6 +133,10 @@ export default function CafeMenuPage() {
 
   return (
     <div className="customer-page">
+      <SEO
+        title={cafe?.cafeName ? `${cafe.cafeName} Menu & Coffee Prices` : "Cafe Menu & Prices"}
+        description={`Browse specialty coffee, handcrafted drinks, and bakery items at ${cafe?.cafeName || "this cafe"}. Order online or directly from your table.`}
+      />
       <div className="customer-shell">
         <section className="customer-panel">
           <div className="customer-panel-head">

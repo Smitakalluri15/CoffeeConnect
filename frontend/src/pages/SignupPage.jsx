@@ -1,3 +1,4 @@
+import SEO from "../components/common/SEO";
 import { useMemo, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -138,6 +139,10 @@ export default function SignupPage({ defaultRole }) {
 
   return (
     <div className="auth-bg premium-signup">
+      <SEO
+        title="Create an Account"
+        description="Join CoffeeConnect to find artisanal cafes, order specialty brews, and book tables seamlessly."
+      />
       <div className="signup-shell">
         <aside className="signup-side">
           <div className="signup-brand">

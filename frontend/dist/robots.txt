@@ -1,0 +1,29 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /cafes
+Allow: /cafes/*
+Allow: /sharebite
+Allow: /login
+Allow: /signup
+
+# Disallow private user, admin, owner, and staff portals
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /owner
+Disallow: /owner/*
+Disallow: /staff
+Disallow: /staff/*
+Disallow: /dashboard
+Disallow: /dashboard/*
+Disallow: /profile
+Disallow: /booking
+Disallow: /cart
+Disallow: /checkout
+Disallow: /orders
+Disallow: /orders/*
+Disallow: /reset-password
+Disallow: /forgot-password
+
+# Sitemap
+Sitemap: https://coffeeconnect.app/sitemap.xml

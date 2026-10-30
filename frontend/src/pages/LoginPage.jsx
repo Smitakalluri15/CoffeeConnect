@@ -1,3 +1,4 @@
+import SEO from "../components/common/SEO";
 import { useMemo, useState } from "react";
 import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -58,6 +59,10 @@ export default function LoginPage({ defaultRole }) {
 
   return (
     <div className="auth-bg premium-login">
+      <SEO
+        title="Login"
+        description="Sign in to CoffeeConnect to reserve tables, order coffee, or manage your cafe."
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

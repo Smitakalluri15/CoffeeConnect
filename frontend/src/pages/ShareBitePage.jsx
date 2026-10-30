@@ -1,3 +1,4 @@
+import SEO from "../components/common/SEO";
 import "./../styles/sharebite.css";
 import { ArrowRight, Heart, MapPin, Clock3, ShieldCheck, UploadCloud, Sparkles, Users } from "lucide-react";
 
@@ -41,6 +42,11 @@ const screenTiles = [
 export default function ShareBitePage() {
   return (
     <div className="sharebite-page">
+      <SEO
+        title="ShareBite - Community Food & Coffee Sharing Initiative"
+        description="Join ShareBite by CoffeeConnect. Donate surplus meals, connect with local shelters, and volunteer to combat food waste in your neighborhood."
+        keywords="food donation, surplus meals, hunger relief, community cafe, ShareBite, CoffeeConnect"
+      />
       <div className="sb-ambient sb-ambient-a" />
       <div className="sb-ambient sb-ambient-b" />
 

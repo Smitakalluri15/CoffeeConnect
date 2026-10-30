@@ -2,6 +2,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { isAuthorized } from "../utils/roles.js";
+import SEO from "../components/common/SEO.jsx";
 
 export default function ProtectedRoute({ children, allowedRoles = [], redirectTo = "/dashboard" }) {
   const { token, user, loading } = useAuth();
@@ -32,5 +33,10 @@ export default function ProtectedRoute({ children, allowedRoles = [], redirectTo
     return <Navigate to={target} replace state={target === "/login" ? { from: location } : undefined} />;
   }
 
-  return children;
+  return (
+    <>
+      <SEO noindex={true} />
+      {children}
+    </>
+  );
 }

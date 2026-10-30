@@ -1,3 +1,4 @@
+import SEO from "../components/common/SEO";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getPublicCafes, resolveMediaUrl } from "../api/api";
@@ -54,6 +55,11 @@ export default function CafeListingPage() {
 
   return (
     <div className="customer-page">
+      <SEO
+        title="Explore Artisanal Cafes & Specialty Coffee Shops"
+        description="Browse and discover top-rated cafes, specialty coffee roasters, and cozy coffee spots near you on CoffeeConnect."
+        keywords="find cafes, top coffee shops, cafe directory, reserve cafe table, local cafes"
+      />
       <div className="customer-shell">
         <section className="customer-hero-card">
           <div className="customer-hero-top">

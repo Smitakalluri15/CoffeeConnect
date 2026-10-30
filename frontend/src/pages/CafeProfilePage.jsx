@@ -1,3 +1,4 @@
+import SEO from "../components/common/SEO";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCafeDetails, resolveMediaUrl } from "../api/api";
@@ -69,6 +70,43 @@ export default function CafeProfilePage() {
     return buildDistanceInfo(userLocation, cafe.latitude, cafe.longitude, locationEnabled);
   }, [cafe, userLocation, locationEnabled]);
 
+  const seoData = useMemo(() => {
+    if (!cafe) {
+      return {
+        title: "Cafe Profile",
+        description: "Explore cafe menus, ambiance, and table bookings on CoffeeConnect."
+      };
+    }
+    const coverImage = resolveMediaUrl(cafe.coverImageUrl || cafe.cafeLogoUrl);
+    const cafeCity = cafe.city ? " in " + cafe.city : "";
+    return {
+      title: cafe.cafeName + cafeCity + " - Menu & Table Booking",
+      description: cafe.description || ("Reserve a table and enjoy artisanal coffee at " + cafe.cafeName + cafeCity + ". View menu, ratings, and location."),
+      ogImage: coverImage || undefined,
+      ogType: "restaurant",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": cafe.cafeName,
+        "description": cafe.description || ("Artisanal coffee and cafe experiences at " + cafe.cafeName),
+        "image": coverImage || undefined,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": cafe.street || undefined,
+          "addressLocality": cafe.city || undefined,
+          "addressRegion": cafe.state || undefined,
+          "postalCode": cafe.pincode || undefined
+        },
+        "telephone": cafe.phone || undefined,
+        "aggregateRating": cafe.rating ? {
+          "@type": "AggregateRating",
+          "ratingValue": Number(cafe.rating).toFixed(1),
+          "reviewCount": cafe.reviewCount || 1
+        } : undefined
+      }
+    };
+  }, [cafe]);
+
   useEffect(() => {
     if (!mapConfig || !mapRef.current) return undefined;
     if (!mapConfig.mapAvailable) {
@@ -127,7 +165,7 @@ export default function CafeProfilePage() {
         setMapError(err?.message || "Failed to load Google Maps JavaScript API.");
       });
 
-    return () => {
+  return () => {
       cancelled = true;
       if (cafeMarker) {
         cafeMarker.map = null;
@@ -143,6 +181,13 @@ export default function CafeProfilePage() {
 
   return (
     <div className="customer-page">
+      <SEO
+        title={seoData.title}
+        description={seoData.description}
+        ogImage={seoData.ogImage}
+        ogType={seoData.ogType}
+        schema={seoData.schema}
+      />
       <div className="customer-shell">
         {loading ? (
           <div className="customer-state">Loading cafe profile...</div>
